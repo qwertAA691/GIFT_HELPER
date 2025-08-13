@@ -1,4 +1,4 @@
-[Uploading index_fixed.html…]()<!doctype html>
+<!doctype html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
@@ -651,4 +651,3 @@ window.addEventListener('beforeunload', ()=> {
 </script>
 </body>
 </html>
-
